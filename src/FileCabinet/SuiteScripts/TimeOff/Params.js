@@ -18,7 +18,7 @@ define([],
                     BUTTONS: {
                         CREATE: {
                             NAME:'custpage_add_button',
-                            LABEL: 'Save'
+                            LABEL: 'Create New'
                         },
                         BACK:{
                             NAME:'custpage_back_button',
@@ -28,6 +28,10 @@ define([],
                     USERINFO: {
                         NAME: 'custpage_user_info',
                         LABEL: 'Current User Information'
+                    },
+                    NEW_REQUEST_GROUP:{
+                        NAME: 'custpage_new_request_info',
+                        LABEL: 'Request fields'
                     },
                     SUBLIST: {
                         NAME: 'custpage_timeoff_sublist',
@@ -98,8 +102,72 @@ define([],
                     YEAR: "custrecord_bts_ex_employee_year",
                     LEFT_PAID_DAYS: "custrecord_bts_remai_paid_days",
                     LEFT_WORK_HOME: "custrecord_bts_work_home_days"
+                },
+                CREATE_FORM:{
+                    CURRENTUSER:{
+                        NAME:'custpage_request_user',
+                        LABEL:'User'
+                    },
+                    PAID_DAYS_LEFT:{
+                        NAME:'custpage_request_paid_days_left',
+                        LABEL:'Paid Days Left'
+                    },
+                    WORK_HOME_DAYS_LEFT:{
+                        NAME:'custpage_request_home_office_days_left',
+                        LABEL:'REMAINING DAYS HOME OFFICE'
+                    },
+                    DATE_OF_REQUEST:{
+                        NAME: 'custpage_request_date',
+                        LABEL: 'Date of Request' 
+                    },
+                    FROM_DATE:{
+                        NAME: 'custpage_from_date',
+                        LABEL: 'From date' 
+                    },
+                    TO_DATE:{
+                        NAME: 'custpage_to_date',
+                        LABEL: 'To date' 
+                    },
+                    REQUEST_TYPE:{
+                        NAME: 'custpage_request_type',
+                        LABEL: 'Request Type'
+                    },
+                    REQUEST_OPTIONS:{
+                        NAME: 'custpage_request_options',
+                        LABEL:'Options'
+                    },
+                    APPROVER:{
+                        NAME:'custpage_next_approver',
+                        LABEL:'Next Approver'
+                    },
+                    REPLACE_EMPLOYEE:{
+                        NAME:'custpage_replace_by',
+                        LABEL:'Replace User'
+                    },
+                    PARTIAL_DAY:{
+                        NAME:'custpage_partial_day',
+                        LABEL:'Partial Day Off'
+                    },
+                    START_HOUR:{
+                        NAME:'custpage_from_hour',
+                        LABEL:'From (hour)'
+                    },
+                    END_HOUR:{
+                        NAME:'custpage_until_hour',
+                        LABEL:'To (hour)'
+                    },
+                    ATTACHED_FILE:{
+                        NAME:'custpage_attached_file',
+                        LABEL:'Attach File'
+                    },
+                    STATUS:{
+                        NAME:'custpage_request_status',
+                        LABEL:'Request Status'
+                    }
                 }
-
+            },
+            CUST_RECORDS:{
+                TIME_OFF_REQUEST:'customrecord_bts_holiday_time_off'
             }
 
         }

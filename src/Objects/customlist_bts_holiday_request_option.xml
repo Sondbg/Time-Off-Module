@@ -1,0 +1,44 @@
+<customlist scriptid="customlist_bts_holiday_request_option">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>[BTS] Holiday - Request option</name>
+  <customvalues>
+    <customvalue scriptid="val_599834_t1828401_674">
+      <isinactive>F</isinactive>
+      <value>Платен отпуск по чл.155 от КТ</value>
+    </customvalue>
+    <customvalue scriptid="val_599835_t1828401_303">
+      <isinactive>F</isinactive>
+      <value>Отпуск при бракпо чл. 157</value>
+    </customvalue>
+    <customvalue scriptid="val_599836_t1828401_643">
+      <isinactive>F</isinactive>
+      <value>Отпуск при кръводаряване по чл. 157</value>
+    </customvalue>
+    <customvalue scriptid="val_599837_t1828401_421">
+      <isinactive>F</isinactive>
+      <value>Отпуск за медицински преглед</value>
+    </customvalue>
+    <customvalue scriptid="val_599838_t1828401_922">
+      <isinactive>F</isinactive>
+      <value>Друг вид отпуск  в КТ</value>
+    </customvalue>
+    <customvalue scriptid="val_599839_t1828401_526">
+      <isinactive>F</isinactive>
+      <value>Неплатен годишен отпуск по чл. 160 от КТ</value>
+    </customvalue>
+    <customvalue scriptid="val_599840_t1828401_125">
+      <isinactive>F</isinactive>
+      <value>Отпуск по време на бременост и раждане по чл.163</value>
+    </customvalue>
+    <customvalue scriptid="val_599841_t1828401_681">
+      <isinactive>F</isinactive>
+      <value>Отпуск при раждане на дете за бащата по чл 163</value>
+    </customvalue>
+    <customvalue scriptid="val_599842_t1828401_342">
+      <isinactive>F</isinactive>
+      <value>Платен отпуск за отглеждане на дете по чл. 164</value>
+    </customvalue>
+  </customvalues>
+</customlist>

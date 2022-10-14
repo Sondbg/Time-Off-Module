@@ -1,0 +1,36 @@
+<customlist scriptid="customlist_bts_holuday_type">
+  <description></description>
+  <isinactive>F</isinactive>
+  <isordered>T</isordered>
+  <name>[BTS] Holidays - types</name>
+  <customvalues>
+    <customvalue scriptid="val_599813_t1828401_555">
+      <isinactive>F</isinactive>
+      <value>Annually Paid day off</value>
+    </customvalue>
+    <customvalue scriptid="val_599819_t1828401_891">
+      <isinactive>F</isinactive>
+      <value>Unpaid day off</value>
+    </customvalue>
+    <customvalue scriptid="val_599814_t1828401_312">
+      <isinactive>F</isinactive>
+      <value>Partially day off</value>
+    </customvalue>
+    <customvalue scriptid="val_599815_t1828401_640">
+      <isinactive>F</isinactive>
+      <value>Home Office</value>
+    </customvalue>
+    <customvalue scriptid="val_599816_t1828401_281">
+      <isinactive>F</isinactive>
+      <value>Sick leave</value>
+    </customvalue>
+    <customvalue scriptid="val_599817_t1828401_827">
+      <isinactive>F</isinactive>
+      <value>Мaternity/Paternity</value>
+    </customvalue>
+    <customvalue scriptid="val_599820_t1828401_944">
+      <isinactive>F</isinactive>
+      <value>Other reason</value>
+    </customvalue>
+  </customvalues>
+</customlist>

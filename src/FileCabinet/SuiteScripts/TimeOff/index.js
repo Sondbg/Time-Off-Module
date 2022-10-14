@@ -2,9 +2,9 @@
  * @NApiVersion 2.1
  * @NScriptType Suitelet
  */
-define(['N/ui/serverWidget','N/record', 'N/runtime','./libraryFunctions/search','N/log','N/error','N/url','./Params','./FormTemplates/returnForms'],
+define(['N/redirect','N/ui/serverWidget','N/record', 'N/runtime','./libraryFunctions/search','N/log','N/error','N/url','./Params','./FormTemplates/returnForms','./libraryFunctions/createRecord'],
 
-    (ui,record, runtime, search, log, error, url,parameters,returnForms) => {
+    (redirect,ui,record, runtime, search, log, error, url,parameters,returnForms,createRecord) => {
         /**
          * Defines the Suitelet script trigger point.
          * @param {Object} scriptContext
@@ -13,15 +13,18 @@ define(['N/ui/serverWidget','N/record', 'N/runtime','./libraryFunctions/search',
          * @since 2015.2
          */
        function onRequest (scriptContext)  {
+        var scriptObj=runtime.getCurrentScript();
+        var deploymentID=scriptObj.deploymentId;
+        var scriptID=scriptObj.id;
+        var scriptURL= url.resolveScript({
+            deploymentId: deploymentID,
+            scriptId: scriptID,
+            returnExternalUrl: false
+        });
+
+
             if (scriptContext.request.method === 'GET') {
-                var scriptObj=runtime.getCurrentScript();
-                var deploymentID=scriptObj.deploymentId;
-                var scriptID=scriptObj.id;
-                var scriptURL= url.resolveScript({
-                    deploymentId: deploymentID,
-                    scriptId: scriptID,
-                    returnExternalUrl: false
-                });
+ 
 
 
 var formToUse=scriptContext.request.parameters.redirectForm || 'landForm';
@@ -38,6 +41,14 @@ if(exceptionSearchResult==false){
 }
  var form=returnForms[formToUse](userID,exceptionSearchResult);
                 scriptContext.response.writePage(form);
+            }if(scriptContext.request.method === 'POST'){
+           if(createRecord(scriptContext)){
+            redirect.toSuitelet({
+                scriptId: scriptID,
+                deploymentId: deploymentID,
+            })
+           }
+
             }
             
         }

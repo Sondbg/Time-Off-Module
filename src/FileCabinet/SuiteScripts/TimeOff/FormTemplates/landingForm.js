@@ -10,7 +10,7 @@ function(ui,runtime,parameters){
     var form = ui.createForm({
         title: parameters.FORM.MAIN.NAME
     });
-    form.clientScriptModulePath = '../libraryFunctions/ClientScript_Forms.js';
+    form.clientScriptModulePath = '../libraryFunctions/ClientScript_landing_form.js';
    
     /* user field groups */
     var userInfoGroup=form.addFieldGroup({
@@ -19,10 +19,8 @@ function(ui,runtime,parameters){
     });
 
     /* Add new Button */
-    var addButton=form.addButton({
-        id: parameters.FIELDGROUPS.SUITELET.BUTTONS.CREATE.NAME,
-        label: parameters.FIELDGROUPS.SUITELET.BUTTONS.CREATE.LABEL,
-        functionName: 'redirectToHome("create")'
+    var addButton=form.addSubmitButton({
+         label: parameters.FIELDGROUPS.SUITELET.BUTTONS.CREATE.LABEL,
     })
 
 
@@ -35,9 +33,7 @@ function(ui,runtime,parameters){
         container: parameters.FIELDGROUPS.SUITELET.USERINFO.NAME
     });
     userField.defaultValue=userID;
-    userField.updateDisplayType({
-        displayType: ui.FieldDisplayType.INLINE
-    });
+    setFieldDisplayType(userField,'INLINE');
     /* Days waiting for approval */
 
     var waitingApproval=form.addField({
@@ -47,9 +43,7 @@ function(ui,runtime,parameters){
         container: parameters.FIELDGROUPS.SUITELET.USERINFO.NAME
     });
     waitingApproval.defaultValue='needs to be Search';
-    waitingApproval.updateDisplayType({
-        displayType: ui.FieldDisplayType.INLINE
-    });
+    setFieldDisplayType(waitingApproval,'INLINE');
 
     /* Yearly Paid Days for the user */
     var YearlyPaidDays=form.addField({
@@ -59,9 +53,7 @@ function(ui,runtime,parameters){
         container: parameters.FIELDGROUPS.SUITELET.USERINFO.NAME
     });
     YearlyPaidDays.defaultValue=objInfo.annualPaidDays;
-    YearlyPaidDays.updateDisplayType({
-        displayType: ui.FieldDisplayType.INLINE
-    });
+    setFieldDisplayType(YearlyPaidDays,'INLINE');
     YearlyPaidDays.updateBreakType({
         breakType: ui.FieldBreakType.STARTCOL
     });
@@ -74,9 +66,7 @@ function(ui,runtime,parameters){
             container: parameters.FIELDGROUPS.SUITELET.USERINFO.NAME
         });
         paidDaysLeft.defaultValue=objInfo.leftPaidDays;
-        paidDaysLeft.updateDisplayType({
-            displayType: ui.FieldDisplayType.INLINE
-        });
+        setFieldDisplayType(paidDaysLeft,'INLINE');
 
     /* Yearly Paid Home Office Days for the user */
     var daysWorkHome=form.addField({
@@ -86,9 +76,7 @@ function(ui,runtime,parameters){
         container: parameters.FIELDGROUPS.SUITELET.USERINFO.NAME
     });
     daysWorkHome.defaultValue=objInfo.annualWorkHomeDays;
-    daysWorkHome.updateDisplayType({
-        displayType: ui.FieldDisplayType.INLINE
-    });
+    setFieldDisplayType(daysWorkHome,'INLINE');
     daysWorkHome.updateBreakType({
         breakType: ui.FieldBreakType.STARTCOL
     });
@@ -101,9 +89,7 @@ function(ui,runtime,parameters){
             container: parameters.FIELDGROUPS.SUITELET.USERINFO.NAME
         });
         homeOfficeDaysLeft.defaultValue=objInfo.leftWorkHomeDays;
-        homeOfficeDaysLeft.updateDisplayType({
-            displayType: ui.FieldDisplayType.INLINE
-        });
+        setFieldDisplayType(homeOfficeDaysLeft,'INLINE');
 
     /* Sublist with recent Time Off Requests*/
 
@@ -135,6 +121,12 @@ function(ui,runtime,parameters){
         label:parameters.FIELDS.SUITELET.SUBLIST.DAYS.LABEL
     });
 
+
+    function setFieldDisplayType(field,displayType){
+        field.updateDisplayType({
+            displayType: ui.FieldDisplayType[displayType]
+        })
+        }
 
     return form
     }
