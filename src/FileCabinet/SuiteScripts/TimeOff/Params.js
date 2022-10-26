@@ -64,24 +64,6 @@ define([],
                     WORK_HOME_DAYS_LEFT: {
                         NAME: 'custpage_days_work_from_home_left',
                         LABEL: 'Remaining days Home Office'
-                    },
-                    SUBLIST: {
-                        DATE: {
-                            NAME: 'custpage_sublist_record_date',
-                            LABEL: 'Date'
-                        },
-                        TYPE: {
-                            NAME: 'custpage_sublist_record_type',
-                            LABEL: 'Type'
-                        },
-                        STATUS: {
-                            NAME: 'custpage_sublist_record_status',
-                            LABEL: 'Status'
-                        },
-                        DAYS: {
-                            NAME: 'custpage_sublist_record_days',
-                            LABEL: 'Days'
-                        },
                     }
                 },
                 EMPLOYEE_LIST: {
@@ -163,11 +145,83 @@ define([],
                     STATUS:{
                         NAME:'custpage_request_status',
                         LABEL:'Request Status'
+                    },
+                    SUBLIST:{
+                        FROM_DATE:{
+                          NAME:'custpage_sublist_from_date',
+                          LABEL:'From Date'
+                        },
+                        TO_DATE:{
+                            NAME:'custpage_sublist_to_date',
+                            LABEL:'Until Date'
+                        },
+                        TYPE:{
+                            NAME:'custpage_sublist_type_request',
+                            LABEL:'Request Type'
+                        },
+                        OPTIONS:{
+                            NAME:'custpage_sublist_options',
+                            LABEL:'Options'
+                        },
+                        STATUS:{
+                            NAME:'custpage_sublist_status',
+                            LABEL:'Status'
+                        },
+                        DATE:{
+                            NAME:'custpage_sublist_date',
+                            LABEL:'Request Date'
+                        },
+                        START_HOUR:{
+                            NAME:'custpage_sublist_start_hour',
+                            LABEL:'Start Hour'
+                        },
+                        END_HOUR:{
+                            NAME:'custpage_sublist_end_hour',
+                            LABEL:'End Hour'
+                        },
+                        DAYS_REQUEST:{
+                            NAME:'custpage_sublist_request_days',
+                            LABEL:'Requested Days'
+                        },
+                        REPLACE_USER:{
+                            NAME:'custpage_sublist_replace',
+                            LABEL:'Replaced by'
+                        }
+                    },
+                    CALENDAR:{
+                        NAME:'custpage_html_calendar',
+                        LABEL:'Calendar'
+                    },
+                    DAYS_REQUESTED:{
+                        NAME:'custpage_days_requested',
+                        LABEL:'Request Days'
                     }
+                    
+                },
+                BTS_TIME_OFF:{
+                    USER:'custrecord_bts_time_off_user',
+                    DATE_REQUEST:'custrecord_bts_time_off_date_request',
+                    FROM_DATE:'custrecord_bts_time_off_date',
+                    TO_DATE:'custrecord_bts_time_off_end_date',
+                    REQUEST_TYPE:'custrecord_bts_time_off_type',
+                    OPTIONS:'custrecord_bts_time_off_options',
+                    APPROVER:'custrecord_bts_time_off_approver',
+                    REPLACE_USER:'custrecord_bts_time_off_replac_user',
+                    STATUS:'custrecord_bts_time_off_status',
+                    PARTIAL_DAY:'custrecord_bts_time_off_partially',
+                    START_HOUR:'custrecord_bts_time_off_start_hour',
+                    END_HOUR:'custrecord_bts_time_off_end_hour',
+                    EMPL_RECORD:'custrecord_bts_time_off_empl_record',
+                    DAYS_REQUESTED:'custrecord_bts_holiday_days_request_off'
+                },
+                BANK_HOLIDAYS:{
+                    START_DATE:'custrecord_bts_holiday_start_date',
+                    END_DATE:'custrecord_bts_holiday_end_date'
                 }
             },
             CUST_RECORDS:{
-                TIME_OFF_REQUEST:'customrecord_bts_holiday_time_off'
+                TIME_OFF_REQUEST:'customrecord_bts_holiday_time_off',
+                BANK_HOLIDAYS:'customrecord_bts_bank_holiday_days'
             }
 
         }

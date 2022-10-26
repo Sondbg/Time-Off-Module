@@ -2,8 +2,8 @@
  * @NApiVersion 2.1
  * @NModuleScope SameAccount
  */
- define(['N/ui/serverWidget','../Params'], 
- function(ui,parameters){
+ define(['N/ui/serverWidget','../Params','../libraryFunctions/search'], 
+ function(ui,parameters,search){
   function createNewForm(userID,objInfo){
  
   
@@ -87,6 +87,8 @@ var approverField=form.addField({
     container: parameters.FIELDGROUPS.SUITELET.NEW_REQUEST_GROUP.NAME
 });
 setFieldDisplayType(approverField,'INLINE');
+var employeeRecord=search.HolidayEmployeeListSearch(userID);
+approverField.defaultValue=employeeRecord.userApprover
 
         /* starting Date */
         var fromDate=form.addField({
@@ -114,6 +116,9 @@ setFieldDisplayType(approverField,'INLINE');
             container: parameters.FIELDGROUPS.SUITELET.NEW_REQUEST_GROUP.NAME
         });
         requestType.isMandatory=true;
+        requestType.updateBreakType({
+            breakType: ui.FieldBreakType.STARTCOL
+        });
 
         var requestOptions=form.addField({
             id: parameters.FIELDS.CREATE_FORM.REQUEST_OPTIONS.NAME,
@@ -150,7 +155,9 @@ setFieldDisplayType(approverField,'INLINE');
             label: parameters.FIELDS.CREATE_FORM.PARTIAL_DAY.LABEL,
             container: parameters.FIELDGROUPS.SUITELET.NEW_REQUEST_GROUP.NAME
         });
-
+partialDayOff.updateBreakType({
+    breakType: ui.FieldBreakType.STARTCOL
+});
 
         /* The next 2 fields need to be dynamically shown*/
         var startHour=form.addField({
@@ -169,14 +176,32 @@ setFieldDisplayType(startHour,'DISABLED');
         });
         setFieldDisplayType(endHour,'DISABLED');
 
-        /* should be hidden / visible on checkbox Trigger*/
+        var daysRequested=form.addField({
+            id:parameters.FIELDS.CREATE_FORM.DAYS_REQUESTED.NAME,
+            type: ui.FieldType.INTEGER,
+            label:parameters.FIELDS.CREATE_FORM.DAYS_REQUESTED.LABEL,
+            container:parameters.FIELDGROUPS.SUITELET.NEW_REQUEST_GROUP.NAME
+        });
+        setFieldDisplayType(daysRequested,'INLINE');
         
         var attachedFile=form.addField({
             id: parameters.FIELDS.CREATE_FORM.ATTACHED_FILE.NAME,
             type: ui.FieldType.FILE,
-            label: parameters.FIELDS.CREATE_FORM.ATTACHED_FILE.LABEL,
+            label: parameters.FIELDS.CREATE_FORM.ATTACHED_FILE.LABEL
         })
 
+
+       var calendarGroup=form.addFieldGroup({
+            id: 'custpage_calendarGroup',
+            label: 'Calendar',
+        });
+        var calendarHTML=form.addField({
+            id: parameters.FIELDS.CREATE_FORM.CALENDAR.NAME,
+            type: ui.FieldType.INLINEHTML,
+            label: parameters.FIELDS.CREATE_FORM.CALENDAR.LABEL,
+            container:'custpage_calendarGroup'
+        });
+        calendarHTML.defaultValue="<h1>Hello World</h1>"
 /* Set the Field display Type If it's different from Normal */
 function setFieldDisplayType(field,displayType){
 field.updateDisplayType({

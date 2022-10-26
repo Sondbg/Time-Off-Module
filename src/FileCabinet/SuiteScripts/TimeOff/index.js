@@ -24,29 +24,33 @@ define(['N/redirect','N/ui/serverWidget','N/record', 'N/runtime','./libraryFunct
 
 
             if (scriptContext.request.method === 'GET') {
- 
-
 
 var formToUse=scriptContext.request.parameters.redirectForm || 'landForm';
-log.debug('request params',formToUse);
+// log.debug('request params',formToUse);
                 var user=runtime.getCurrentUser();
                 var userID=user.id;
 
                 var employeeListSearch=search.HolidayEmployeeListSearch(userID);
 var exceptionSearchResult=search.exceptionEmployeeDaysSearch(employeeListSearch.employee_list_record_id);
+var result;
 if(exceptionSearchResult==false){
+    log.debug('exception returned false');
+    result=employeeListSearch;
 // да върне съобщение ако липсва документ
 }else{
-
+result=exceptionSearchResult
 }
- var form=returnForms[formToUse](userID,exceptionSearchResult);
+ var form=returnForms[formToUse](userID,result);
                 scriptContext.response.writePage(form);
-            }if(scriptContext.request.method === 'POST'){
+            }
+            
+if(scriptContext.request.method === 'POST'){
            if(createRecord(scriptContext)){
             redirect.toSuitelet({
                 scriptId: scriptID,
                 deploymentId: deploymentID,
-            })
+            });
+            log.debug('scriptContext',scriptContext.request)
            }
 
             }
