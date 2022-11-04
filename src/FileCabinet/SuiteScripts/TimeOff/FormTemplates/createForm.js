@@ -2,8 +2,8 @@
  * @NApiVersion 2.1
  * @NModuleScope SameAccount
  */
- define(['N/ui/serverWidget','../Params','../libraryFunctions/search'], 
- function(ui,parameters,search){
+ define(['N/ui/serverWidget','../Params','../libraryFunctions/search','../library/calendar'], 
+ function(ui,parameters,search,calendar){
   function createNewForm(userID,objInfo){
  
   
@@ -201,7 +201,7 @@ setFieldDisplayType(startHour,'DISABLED');
             label: parameters.FIELDS.CREATE_FORM.CALENDAR.LABEL,
             container:'custpage_calendarGroup'
         });
-        calendarHTML.defaultValue="<h1>Hello World</h1>"
+        calendarHTML.defaultValue=calendar.buildTable()
 /* Set the Field display Type If it's different from Normal */
 function setFieldDisplayType(field,displayType){
 field.updateDisplayType({
