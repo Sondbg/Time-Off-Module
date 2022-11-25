@@ -151,7 +151,8 @@ function userTimeOffRequests(userID){
          search.createColumn({name: parameters.FIELDS.BTS_TIME_OFF.START_HOUR, label: "Start Hour"}),
          search.createColumn({name: parameters.FIELDS.BTS_TIME_OFF.END_HOUR, label: "End Hour"}),
          search.createColumn({name: parameters.FIELDS.BTS_TIME_OFF.DAYS_REQUESTED, label: "Days of request of Time off"}),
-         search.createColumn({name: parameters.FIELDS.BTS_TIME_OFF.DATE_REQUEST, label: "Date of Request"})
+         search.createColumn({name: parameters.FIELDS.BTS_TIME_OFF.DATE_REQUEST, label: "Date of Request"}),
+         search.createColumn({name: "internalid", label: "Internal ID"})
       ]
    });
    var searchResultCount = customrecord_bts_holiday_time_offSearchObj.runPaged().count;
@@ -199,6 +200,9 @@ var result=results[i]
     var daysRequested=result.getValue({
       name:parameters.FIELDS.BTS_TIME_OFF.DAYS_REQUESTED
     });
+    var internalId=result.getValue({
+      name:'internalid'
+    })
 
  resultObj={
    dateOfRequest,
@@ -211,7 +215,8 @@ var result=results[i]
    status,
    startHour,
    endHour,
-   daysRequested
+   daysRequested,
+   internalId
     }
     returnArr.push(resultObj)
       // .run().each has a limit of 4,000 results

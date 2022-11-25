@@ -1,0 +1,152 @@
+<?xml version="1.0"?><!DOCTYPE pdf PUBLIC "-//big.faceless.org//report" "report-1.1.dtd">
+<pdf>
+<head>
+	<link name="NotoSans" type="font" subtype="truetype" src="${nsfont.NotoSans_Regular}" src-bold="${nsfont.NotoSans_Bold}" src-italic="${nsfont.NotoSans_Italic}" src-bolditalic="${nsfont.NotoSans_BoldItalic}" bytes="2" />
+	<#if .locale == "zh_CN">
+		<link name="NotoSansCJKsc" type="font" subtype="opentype" src="${nsfont.NotoSansCJKsc_Regular}" src-bold="${nsfont.NotoSansCJKsc_Bold}" bytes="2" />
+	<#elseif .locale == "zh_TW">
+		<link name="NotoSansCJKtc" type="font" subtype="opentype" src="${nsfont.NotoSansCJKtc_Regular}" src-bold="${nsfont.NotoSansCJKtc_Bold}" bytes="2" />
+	<#elseif .locale == "ja_JP">
+		<link name="NotoSansCJKjp" type="font" subtype="opentype" src="${nsfont.NotoSansCJKjp_Regular}" src-bold="${nsfont.NotoSansCJKjp_Bold}" bytes="2" />
+	<#elseif .locale == "ko_KR">
+		<link name="NotoSansCJKkr" type="font" subtype="opentype" src="${nsfont.NotoSansCJKkr_Regular}" src-bold="${nsfont.NotoSansCJKkr_Bold}" bytes="2" />
+	<#elseif .locale == "th_TH">
+		<link name="NotoSansThai" type="font" subtype="opentype" src="${nsfont.NotoSansThai_Regular}" src-bold="${nsfont.NotoSansThai_Bold}" bytes="2" />
+	</#if>
+    <style type="text/css">table { font-size: 11pt; table-layout: fixed; width: 100%; line-height: 10; }
+th { font-weight: bold; font-size: 8pt; vertical-align: middle; padding: 5px 6px 3px; background-color: #e3e3e3; color: #333333; padding-bottom: 10px; padding-top: 10px; }
+td { padding: 4px 6px; text-align:center;}
+b { font-weight: bold; color: #333333; }
+div{line-height:10;}
+span.semiHeading{ font-size: 12px;
+      font-weight:bold;
+      }
+td.heading{
+        font-weight: bold;
+        font-size: 25px;
+        align:center;
+  padding-bottom:40px;
+      }
+table.tableContent{
+        padding-top:40px;
+        padding-bottom:20px;
+        align:left;
+      }
+      label, input{
+        display:inline;
+      }
+      * {
+							<#if .locale == "zh_CN">
+								font-family: NotoSans, NotoSansCJKsc, sans-serif;
+								<#elseif .locale == "zh_TW">
+									font-family: NotoSans, NotoSansCJKtc, sans-serif;
+									<#elseif .locale == "ja_JP">
+										font-family: NotoSans, NotoSansCJKjp, sans-serif;
+										<#elseif .locale == "ko_KR">
+											font-family: NotoSans, NotoSansCJKkr, sans-serif;
+											<#elseif .locale == "th_TH">
+												font-family: NotoSans, NotoSansThai, sans-serif;
+												<#else>
+													font-family: NotoSans, sans-serif;
+												</#if>
+            }
+</style>
+</head>
+<body padding="0.5in 0.5in 0.5in 0.5in" size="Letter">
+    <table style="width: 100%; font-size: 10pt;"><tr>
+	<td>&nbsp;</td>
+	<td style="height: 55px;">Предприятие:<span class="semiHeading"> ${companyinformation.legalname}</span></td>
+	</tr>
+	<tr>
+	<td>&nbsp;</td>
+	<td style="height: 19px;">На вниманието на: г-н Управителя</td>
+	</tr>
+	<tr>
+	<td>&nbsp;</td>
+	<td style="height: 19px;">Длъжност: ${record.custrecord_bts_time_off_approver.title}</td>
+	</tr></table>
+
+<table style="width: 100%; padding-top:50px;"><tr>
+	<td class="heading" colspan="2">МОЛБА ЗА ОТПУСК</td>
+	</tr>
+	<tr>
+	<td>&nbsp;</td>
+	<td>От: <b> ${record.custrecord_bts_time_off_user}</b>, ЕГН: ${record.custrecord_bts_time_off_empl_record.custrecord_bts_holiday_egn_user}</td>
+	</tr>
+	<tr>
+	<td>&nbsp;</td>
+	<td>Длъжност: ${record.custrecord_bts_time_off_empl_record.custrecord_bts_holiday_job_tittle}</td>
+	</tr></table>
+
+<table class="tableContent"><tr>
+	<td>
+	<p style="text-indent: 30px;">Уважаеми г-н Управителя,</p>
+	</td>
+	</tr>
+	<tr>
+	<td colspan="2">
+	<p style="text-indent: 30px;">Моля да ми разрешите ползването на отпуск, както следва:</p>
+	</td>
+	</tr>
+	<tr>
+	<td colspan="2"><b>${record.custrecord_bts_time_off_type}</b> в размер на <b>${record.custrecord_bts_holiday_days_request_off}</b> работен ден от <b>${record.custrecord_bts_time_off_date} до ${record.custrecord_bts_time_off_end_date} .</b></td>
+	</tr>
+	<tr>
+	<td colspan="2">&nbsp;</td>
+	</tr>
+	<tr>
+	<td>Дата: ${record.custrecord_bts_time_off_date_request}</td>
+	<td>Подпис:........................................</td>
+	</tr>
+	<tr>
+	<td>&nbsp;</td>
+	<td>${record.custrecord_bts_time_off_user}</td>
+	</tr></table>
+
+<hr /><!-- Time Off Order -->
+<table style="width: 100%; font-size: 10pt;"><tr>
+	<td>От:</td>
+	<td style="height: 19px;">Управителя</td>
+	</tr>
+	<tr>
+	<td>&nbsp;</td>
+	<td style="height: 19px;">Длъжност: ${record.custrecord_bts_time_off_approver.title}</td>
+	</tr>
+	<tr>
+	<td>&nbsp;</td>
+	<td style="height: 55px;">Предприятие:<span class="semiHeading"> ${companyinformation.legalname}</span></td>
+	</tr></table>
+
+<table style="width: 100%; padding-top:50px;"><tr>
+	<td class="heading" colspan="2">ЗАПОВЕД ЗА ОТПУСК</td>
+	</tr></table>
+
+<table class="tableContent"><tr>
+	<td colspan="2">
+	<p style="text-indent: 30px;">${record.custrecord_bts_time_off_options} от Кодекса на труда</p>
+	</td>
+	</tr>
+	<tr>
+      <td colspan="2"><input id="allow" name="allow" type="checkbox"></input> <label for="allow">  Разрешавам</label></td>
+	</tr>
+	<tr>
+	<td colspan="2"><input id="refuse" name="refuse" type="checkbox"></input><label for="refuse">  Не разрешавам</label></td>
+	</tr>
+	<tr>
+	<td colspan="2"><div>
+      Ползването на <b>${record.custrecord_bts_time_off_type}</b> от <b>${record.custrecord_bts_time_off_user}, ЕГН: ${record.custrecord_bts_time_off_empl_record.custrecord_bts_holiday_egn_user}, на длъжност ${record.custrecord_bts_time_off_empl_record.custrecord_bts_holiday_job_tittle} </b> в ${companyinformation.legalname}, както следва: ${record.custrecord_bts_time_off_type} в размер на ${record.custrecord_bts_holiday_days_request_off} работен ден от <b>${record.custrecord_bts_time_off_date} до ${record.custrecord_bts_time_off_end_date} .</b>
+      </div></td>
+	</tr>
+	<tr>
+	<td colspan="2">&nbsp;</td>
+	</tr>
+	<tr>
+	<td>Дата:........................................</td>
+	<td>Подпис:........................................</td>
+	</tr>
+	<tr>
+	<td>&nbsp;</td>
+	<td>Управителя</td>
+	</tr></table>
+</body>
+</pdf>

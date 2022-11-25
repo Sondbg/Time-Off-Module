@@ -1,0 +1,10 @@
+<advancedpdftemplate scriptid="custtmpl_bts_holidays_time_off" standard="STDTMPLCR_BTS_HOLIDAY_TIME_OFF">
+  <description>The BTS Holidays Time Off PDF</description>
+  <displaysourcecode>T</displaysourcecode>
+  <isinactive>F</isinactive>
+  <preferred>T</preferred>
+  <printtype>CUSTOMRECORD</printtype>
+  <recordtype>[scriptid=customrecord_bts_holiday_time_off]</recordtype>
+  <title>Custom [BTS] Holidays - Time Off PDF/HTML Template</title>
+  <trantype>CUSTOM</trantype>
+</advancedpdftemplate>

@@ -2,9 +2,9 @@
  * @NApiVersion 2.1
  * @NModuleScope SameAccount
  */
-define(['N/ui/serverWidget', 'N/runtime', '../Params', '../libraryFunctions/search'],
-    function (ui, runtime, parameters, search) {
-        function createLandingForm(userID, objInfo) {
+define(['N/ui/serverWidget', 'N/runtime', '../Params', '../libraryFunctions/search','../libraryFunctions/getSuiteletURL'],
+    function (ui, runtime, parameters, search, buildSuiteletURL) {
+        function createLandingForm(userID, objInfo, suiteletObj) {
 
 
             var form = ui.createForm({
@@ -100,7 +100,8 @@ define(['N/ui/serverWidget', 'N/runtime', '../Params', '../libraryFunctions/sear
             });
 
             /* Sublist Fields */
-
+            //print Button
+            addField(parameters.FIELDS.CREATE_FORM.SUBLIST.PRINTBUTTON.NAME,'TEXT',parameters.FIELDS.CREATE_FORM.SUBLIST.PRINTBUTTON.LABEL)
             //DATE
             addField(parameters.FIELDS.CREATE_FORM.SUBLIST.DATE.NAME,'DATE',parameters.FIELDS.CREATE_FORM.SUBLIST.DATE.LABEL)
             //DAYS OF REQUEST
@@ -135,7 +136,7 @@ define(['N/ui/serverWidget', 'N/runtime', '../Params', '../libraryFunctions/sear
                 })
             }
 
-            //TODO SUBLIST VALUES
+            
             var sublistArr = search.userTimeOffRequests(userID);
             if (sublistArr.length == 0) {
                 return form
@@ -143,6 +144,8 @@ define(['N/ui/serverWidget', 'N/runtime', '../Params', '../libraryFunctions/sear
 
             for (var i = 0; i < sublistArr.length; i++) {
                 // log.debug('array element', sublistArr[i])
+                var suiteletUrlRecordId=buildSuiteletURL(suiteletObj.scriptID,suiteletObj.deploymentID,sublistArr[i].internalId)
+                addSublistValue(parameters.FIELDS.CREATE_FORM.SUBLIST.PRINTBUTTON.NAME,i,`<a href="${suiteletUrlRecordId}" target="_blank" style="color:#255599 !important">Print</a>`)
                 addSublistValue(parameters.FIELDS.CREATE_FORM.SUBLIST.FROM_DATE.NAME, i, sublistArr[i].startDate);
                 addSublistValue(parameters.FIELDS.CREATE_FORM.SUBLIST.DATE.NAME, i, sublistArr[i].dateOfRequest);
                 addSublistValue(parameters.FIELDS.CREATE_FORM.SUBLIST.TO_DATE.NAME, i, sublistArr[i].endDate);

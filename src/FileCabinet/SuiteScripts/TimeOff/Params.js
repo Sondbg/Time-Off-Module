@@ -186,6 +186,10 @@ define([],
                         REPLACE_USER:{
                             NAME:'custpage_sublist_replace',
                             LABEL:'Replaced by'
+                        },
+                        PRINTBUTTON:{
+                            NAME:'custpage_print_timeoff',
+                            LABEL:'Print'
                         }
                     },
                     CALENDAR:{
@@ -221,7 +225,8 @@ define([],
             },
             CUST_RECORDS:{
                 TIME_OFF_REQUEST:'customrecord_bts_holiday_time_off',
-                BANK_HOLIDAYS:'customrecord_bts_bank_holiday_days'
+                BANK_HOLIDAYS:'customrecord_bts_bank_holiday_days',
+                PDF_TMPL:'CUSTTMPL_BTS_HOLIDAYS_TIME_OFF'
             },
             CALENDAR:{
                  MONTHS:{
@@ -245,7 +250,7 @@ define([],
                 '4':'Четвъртък',
                 '5':'Петък',
                 '6':'Събота',
-                '0':'Неделя',
+                '7':'Неделя',
             }
         }
 

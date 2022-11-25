@@ -2,9 +2,9 @@
  * @NApiVersion 2.1
  * @NScriptType Suitelet
  */
-define(['N/redirect','N/ui/serverWidget','N/record', 'N/runtime','./libraryFunctions/search','N/log','N/error','N/url','./Params','./FormTemplates/returnForms','./libraryFunctions/createRecord'],
+define(['N/render','N/redirect','N/ui/serverWidget','N/record', 'N/runtime','./libraryFunctions/search','N/log','N/error','N/url','./Params','./FormTemplates/returnForms','./libraryFunctions/createRecord','./libraryFunctions/renderPDF'],
 
-    (redirect,ui,record, runtime, search, log, error, url,parameters,returnForms,createRecord) => {
+    (render,redirect,ui,record, runtime, search, log, error, url,parameters,returnForms,createRecord,renderPDF) => {
         /**
          * Defines the Suitelet script trigger point.
          * @param {Object} scriptContext
@@ -16,14 +16,15 @@ define(['N/redirect','N/ui/serverWidget','N/record', 'N/runtime','./libraryFunct
         var scriptObj=runtime.getCurrentScript();
         var deploymentID=scriptObj.deploymentId;
         var scriptID=scriptObj.id;
-        var scriptURL= url.resolveScript({
-            deploymentId: deploymentID,
-            scriptId: scriptID,
-            returnExternalUrl: false
-        });
+        var btsRecordId=scriptContext.request.parameters.timeOffID;
+
 
 
             if (scriptContext.request.method === 'GET') {
+                if(btsRecordId){
+                    scriptContext.response.writeFile(renderPDF(btsRecordId),true)
+                }
+
 
 var formToUse=scriptContext.request.parameters.redirectForm || 'landForm';
 // log.debug('request params',formToUse);
@@ -40,7 +41,7 @@ if(exceptionSearchResult==false){
 }else{
 result=exceptionSearchResult
 }
- var form=returnForms[formToUse](userID,result);
+ var form=returnForms[formToUse](userID,result,{deploymentID,scriptID});
                 scriptContext.response.writePage(form);
             }
             
